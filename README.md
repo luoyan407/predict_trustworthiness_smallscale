@@ -40,7 +40,7 @@ sys.path.append('/home/yluo/project/python/oracle_learning/predict_trustworthine
 
 MNIST and CIFAR-10 datasets are managed by Pytorch dataloader. First time you run a script, the dataloader will download the dataset in ```predict_trustworthiness_smallscale/confidnet/data/DATASETNAME-data```.
 
-Download the official pre-trained [ConfidNet](https://github.com/valeoai/ConfidNet/releases/tag/v0.1.0). Extract the pre-trained models in 
+Download the official pre-trained [ConfidNet](https://github.com/valeoai/ConfidNet/releases/tag/v0.1.0). Extract the pre-trained models to 
  ```
 predict_trustworthiness_smallscale/confidnet/pretrained/mnist_pretrained/confidnet/
 predict_trustworthiness_smallscale/confidnet/pretrained/cifar10_pretrained/confidnet/
