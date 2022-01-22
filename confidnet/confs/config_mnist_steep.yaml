@@ -1,0 +1,39 @@
+# Data parameters
+data:
+    dataset: mnist
+    data_dir: data/mnist-data
+    input_size: [28,28]
+    input_channels: 1
+    num_classes: 10
+    valid_size: 0.1
+
+# Training parameters
+training:
+    output_folder: experiments/mnist_steep
+    task: classification
+    learner: selfconfidsteep
+    nb_epochs: 100
+    batch_size: 128
+    loss:
+        name: steep
+        weighting: 1
+        hyperparam: [6.0, 10.0]
+        db: 0.0
+    optimizer:
+        name: adam
+        lr: 0.0000005
+    lr_schedule:
+    ft_on_val: False
+    metrics: ['accuracy', 'auc', 'ap_success', 'accuracy_success', 'ap_errors', 'accuracy_errors', 'fpr_at_95tpr']
+    pin_memory: False
+    num_workers: 1
+    augmentations:
+        normalize: [[0.1307,], [0.3081,]]
+    seed: 511893
+
+# Model parameters
+model:
+    name: small_convnet_mnist_selfconfid_cloning
+    resume: pretrained/mnist_pretrained/confidnet/model_epoch_011.ckpt
+    uncertainty: 
+    test_model:

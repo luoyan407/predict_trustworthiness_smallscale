@@ -1,0 +1,39 @@
+# Data parameters
+data:
+    dataset: cifar10
+    data_dir: data/cifar10-data
+    input_size: [32,32]
+    input_channels: 3
+    num_classes: 10
+    valid_size: 0.1
+
+# Training parameters
+training:
+    output_folder: experiments/cifar10_steep
+    task: classification
+    learner: selfconfidsteep
+    nb_epochs: 5
+    batch_size: 128
+    loss:
+        name: steep
+        weighting: 1
+        hyperparam: [1.0, 1.0]
+    optimizer:
+        name: adam
+        lr: 0.0000009
+    lr_schedule:
+    ft_on_val: False
+    metrics: ['accuracy', 'auc', 'ap_success', 'accuracy_success', 'ap_errors', 'accuracy_errors', 'fpr_at_95tpr']
+    pin_memory: False
+    num_workers: 1
+    augmentations:
+        hflip: True
+        rotate: 15
+        normalize: [[0.4914, 0.4822, 0.4465], [0.2023, 0.1994, 0.2010]]
+    seed: 251665
+
+# Model parameters
+model:
+    name: vgg16_selfconfid_cloning
+    resume: pretrained/cifar10_pretrained/confidnet/model_epoch_162.ckpt
+    uncertainty: 
